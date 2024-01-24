@@ -2,33 +2,21 @@ import java.util.Objects;
 
 public class Employee {
 
-    private String firstName;
-    private String lastName;
-    private String surname;
+    private String fullName;
     private int department;
     private double salary;
     private int id;
     private static int idCounter = 1;
 
-    public Employee(String firstName, String lastName, String surname, int department, double salary) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.surname = surname;
+    public Employee(String fullName,  int department, double salary) {
+        this.fullName = fullName;
         this.department = department;
         this.salary = salary;
         this.id = idCounter++;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getSurname() {
-        return surname;
+    public String getFullName() {
+        return fullName;
     }
 
     public int getDepartment() {
@@ -39,12 +27,18 @@ public class Employee {
         return salary;
     }
 
+    public int getId() {
+        return id;
+    }
+
+
+
     public void setDepartment(int department) {
         this.department = department;
     }
 
-    public int getId() {
-        return id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setSalary(double salary) {
@@ -56,15 +50,15 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return department == employee.department && Double.compare(salary, employee.salary) == 0 && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(surname, employee.surname);
+        return department == employee.department && Double.compare(salary, employee.salary) == 0 && Objects.equals(fullName, employee.fullName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, surname, department, salary);
+        return Objects.hash(fullName, department, salary);
     }
 
     public String toString() {
-        return "id: " + this.id + " ФИО сотрудника: " + this.lastName +" " + this.firstName + " " +  this.surname + " работник отдела № -  " + this.department + " заработная плата: " + this.salary + " руб.";
+        return "id: " + this.id + " ФИО сотрудника: " +   this.fullName + " работник отдела № -  " + this.department + " заработная плата: " + this.salary + " руб.";
     }
 }
